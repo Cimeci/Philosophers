@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:57:37 by inowak--          #+#    #+#             */
-/*   Updated: 2024/12/22 14:22:01 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:29:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,26 @@
 
 typedef struct s_args
 {
-	int nb_philos;
-	int t_die;
-	int t_eat;
-	int t_sleep;
-	int	nb_must_eat;
-}		t_args;
+    int                 nb_philos;
+    int                 t_die;
+    int                 t_eat;
+    int                 t_sleep;
+    int                 nb_must_eat;
+    pthread_mutex_t     *forks;
+    pthread_mutex_t     stop_mutex;
+    pthread_mutex_t     meals_mutex;
+    int                 stop_simulation;
+    int                 meal_count;
+}   t_args;
+
+
+typedef struct s_philo
+{
+	int				id;
+	int				meals_eaten;
+	t_args			*args;
+}	t_philo;
+
 
 
 // error //

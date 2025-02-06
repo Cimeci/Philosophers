@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 11:13:46 by inowak--          #+#    #+#             */
-/*   Updated: 2024/12/22 14:33:12 by marvin           ###   ########.fr       */
+/*   Created: 2024/12/20 11:07:52 by inowak--          #+#    #+#             */
+/*   Updated: 2024/12/20 11:15:03 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOOLS_H
-# define TOOLS_H
+#include "tools.h"
 
-int     ft_strlen(char *str);
-int     ft_atoi(char *str);
+int	ft_strlen(char *str)
+{
+	int i;
 
-#endif
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}

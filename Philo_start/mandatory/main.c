@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:01:40 by inowak--          #+#    #+#             */
-/*   Updated: 2024/12/20 13:40:00 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:47:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,11 @@
 
 void    process(t_args *args)
 {
-    printf("%d ", args->nb_philos);
-    printf("\n");
-    printf("%d ", args->t_die);
-    printf("\n");
-    printf("%d ", args->t_eat);
-    printf("\n");
-    printf("%d ", args->t_sleep);
-    printf("\n");
-    printf("%d ", args->nb_must_eat);
-    printf("\n");
-
+    printf("%d\n", args->nb_philos);
+    printf("%d\n", args->t_die);
+    printf("%d\n", args->t_eat);
+    printf("%d\n", args->t_sleep);
+    printf("%d\n", args->nb_must_eat);
 }
 
 int main(int argc, char **argv)
@@ -35,6 +29,7 @@ int main(int argc, char **argv)
         ft_puterror("./philosophers nb nb nb nb [nb]\n", 1);
     check_input(argv);
     args = ft_init_args(argc, argv);
+    check_int(args);
     process(args);
     free(args);
 }

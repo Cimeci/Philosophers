@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:14:42 by inowak--          #+#    #+#             */
-/*   Updated: 2024/12/22 14:56:19 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:29:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ t_args  *ft_init_args(int argc, char **argv)
 		free(args);
 		ft_puterror("Error : Overflow int max\n", 1);
 	}
+	args->stop_simulation = 0;
+	pthread_mutex_init(&args->stop_mutex, NULL);
+	args->meal_count = 0;
+	pthread_mutex_init(&args->meals_mutex, NULL);
 	return (args);
 }
 
