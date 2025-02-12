@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 10:01:50 by inowak--          #+#    #+#              #
-#    Updated: 2024/12/22 14:23:27 by marvin           ###   ########.fr        #
+#    Updated: 2025/02/12 15:28:22 by inowak--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ BLUE   = \033[1;34m
 PURPLE = \033[1;35m
 RESET  = \033[0m
 
-NAME = philosophers
+NAME = philo
 BONUS = 
 
 CC = cc
@@ -43,7 +43,10 @@ SRC = mandatory/main.c \
 		mandatory/parsing/ft_parsing.c \
 		mandatory/tools/ft_atoi.c \
 		mandatory/tools/ft_strlen.c \
+		mandatory/tools/ft_lst_utils.c\
 		mandatory/init/ft_init.c \
+		mandatory/monitoring.c\
+		mandatory/clean/clean.c\
 
 SRC_BONUS = 
 
@@ -91,6 +94,5 @@ fclean: clean
 	@rm -f $(BONUS)
 
 re: fclean all
-	@echo "$(NAME) restart"
 
 .PHONY: all clean fclean re bonus

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.h                                            :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 11:13:46 by inowak--          #+#    #+#             */
-/*   Updated: 2025/02/12 15:05:24 by inowak--         ###   ########.fr       */
+/*   Created: 2025/02/12 10:30:06 by inowak--          #+#    #+#             */
+/*   Updated: 2025/02/12 14:08:01 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOOLS_H
-# define TOOLS_H
+#include "../philosophers.h"
 
-# include "../philosophers.h"
-
-int		ft_strlen(char *str);
-int		ft_atoi(char *str);
-void	ft_lstadd_back_generic(void **lst, void *new_node, size_t next_offset);
-void	*ft_lstnew_generic(size_t data_size);
-void	ft_lstadd_front(t_philo **lst, t_philo *new);
-
-#endif
+void    clean_all(t_philo *philo, t_args *args)
+{
+    while (philo)
+    {
+        pthread_mutex_destroy(&philo->right_fork);
+        pthread_mutex_destroy(&philo->left_fork);
+        philo = philo->next;
+    }
+    free(philo);
+    free(args);
+}
