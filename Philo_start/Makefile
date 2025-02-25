@@ -6,7 +6,7 @@
 #    By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 10:01:50 by inowak--          #+#    #+#              #
-#    Updated: 2025/02/12 15:28:22 by inowak--         ###   ########.fr        #
+#    Updated: 2025/02/25 13:27:34 by inowak--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,9 @@ SRC = mandatory/main.c \
 		mandatory/tools/ft_strlen.c \
 		mandatory/tools/ft_lst_utils.c\
 		mandatory/init/ft_init.c \
+		mandatory/init/unique_philo.c\
+		mandatory/brother.c\
+		mandatory/routine.c\
 		mandatory/monitoring.c\
 		mandatory/clean/clean.c\
 
