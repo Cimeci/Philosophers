@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:01:40 by inowak--          #+#    #+#             */
-/*   Updated: 2025/02/28 09:33:34 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:23:42 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_philo	*philo;
 	t_times *times;
+	t_run	*run;
 
 	times = NULL;
 	philo = NULL;
@@ -36,7 +37,8 @@ int	main(int argc, char **argv)
 	}
 	check_input(argv);
 	times = ft_init_time(times, argc, argv);
-	philo = ft_init_philo(philo, times);
+	run = ft_init_run();
+	philo = ft_init_philo(philo, times, run);
 	process(philo, times);
-	clean_all(philo);
+	clean_all(philo, run, times);
 }

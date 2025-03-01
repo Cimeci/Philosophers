@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:57:37 by inowak--          #+#    #+#             */
-/*   Updated: 2025/02/28 14:46:37 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:55:23 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,25 @@ enum				e_msg
 
 struct s_philo;
 
-typedef struct s_die
+typedef struct s_run
 {
 	pthread_mutex_t	die;
-}					t_die;
+	bool			simulation_running;
+}					t_run;
 
 typedef struct s_times
 {
-	int				nb_philos;
-	int				nb_must_eat;
+	size_t			nb_philos;
+	size_t			nb_must_eat;
 	time_t			t_die;
 	time_t			t_eat;
 	time_t			t_sleep;
-	bool			simulation_running;
 }					t_times;
 
 typedef struct s_philo
 {
 	t_times			*times;
-	t_die			*die;
+	t_run			*run;
 
 	time_t			start_time;
 	time_t			last_meal;
@@ -78,7 +78,8 @@ void				unique_philo(t_philo *philo);
 // init //
 
 t_times				*ft_init_time(t_times *times, int argc, char **argv);
-t_philo				*ft_init_philo(t_philo *philo, t_times *times);
+t_run				*ft_init_run(void);
+t_philo				*ft_init_philo(t_philo *philo, t_times *times, t_run *run);
 
 //	process //
 
@@ -86,7 +87,7 @@ void				process(t_philo *philo, t_times *times);
 
 // clean //
 
-void				clean_all(t_philo *philo);
+void				clean_all(t_philo *philo, t_run *run, t_times *times);
 
 // parsing //
 
@@ -95,7 +96,7 @@ void				check_input(char **argv);
 
 // sleep_check //
 
-bool				sleep_check(t_philo *philo, time_t sleep_time);
+int					sleep_check(t_philo *philo, time_t sleep_time);
 
 // routine //
 
@@ -104,7 +105,8 @@ void				write_msg(t_philo *philo, char *msg);
 void				ft_eat(t_philo *philo);
 void				ft_sleep(t_philo *philo);
 void				ft_think(t_philo *philo);
-int					ft_die(t_philo *philo);
+void				ft_die(t_philo *philo);
+int					ft_check_die(t_philo *philo);
 void				*routine(void *arg);
 
 // brother //
@@ -114,5 +116,6 @@ void				brother(t_philo *philo);
 // monitoring //
 
 void				monitoring(t_philo *philo);
+void				monitoring_limit(t_philo *philo);
 
 #endif

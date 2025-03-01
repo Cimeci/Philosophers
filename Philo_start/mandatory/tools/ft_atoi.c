@@ -6,19 +6,17 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:09:07 by inowak--          #+#    #+#             */
-/*   Updated: 2025/02/27 13:53:28 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:05:31 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
 
-#include <stdio.h>
-
 size_t	ft_atoi(char *str)
 {
-	int			i;
-	int			nb;
-	int			inf;
+	int		i;
+	size_t	nb;
+	int		inf;
 
 	inf = 0;
 	nb = 0;
@@ -33,4 +31,3 @@ size_t	ft_atoi(char *str)
 		return (nb);
 	return (0);
 }
-

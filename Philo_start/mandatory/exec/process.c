@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:46:23 by inowak--          #+#    #+#             */
-/*   Updated: 2025/02/28 14:05:24 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/01 17:12:10 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ void	process(t_philo *philo, t_times *times)
 		unique_philo(philo);
 		return ;
 	}
-	printf("create\n");
+	printf("\033[1;34m-----ROUTINE-----\033[0m\n");
 	while (cur)
 	{
+		cur->start_time = get_time_in_ms();
 		if (pthread_create(&cur->thread, NULL, routine, cur))
 		{
 			printf("Error create\n");
@@ -34,6 +35,9 @@ void	process(t_philo *philo, t_times *times)
 		if (cur == philo)
 			break;
 	}
-	monitoring(philo);
+	if (philo->times->nb_must_eat)
+		monitoring_limit(philo);
+	else 
+		monitoring(philo);
 	brother(philo);
 }

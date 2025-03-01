@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:14:42 by inowak--          #+#    #+#             */
-/*   Updated: 2025/02/28 14:30:18 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/01 17:19:41 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,32 @@ t_times	*ft_init_time(t_times *times, int argc, char **argv)
 		ft_puterror("Error2 : input false\n", 1);
 		return (NULL);
 	}
-	times->simulation_running = true;
+	printf("\033[1;32m-----INPUT-----\033[0m\n");
+	printf("nb_philos :%zu\n", times->nb_philos);
+	printf("t_die :%ld\n", times->t_die);
+	printf("t_eat :%ld\n", times->t_eat);
+	printf("t_sleep :%ld\n", times->t_sleep);
+	printf("nb_must_eat :%zu\n", times->nb_must_eat);
 	return (times);
 }
 
-t_philo	*ft_init_philo(t_philo *philo, t_times *times)
+t_run	*ft_init_run(void)
+{
+	t_run	*run;
+
+	run = malloc(sizeof(t_run));
+	if (!run)
+		return (NULL);
+	pthread_mutex_init(&run->die, NULL);
+	run->simulation_running = true;
+	return (run);
+}
+
+t_philo	*ft_init_philo(t_philo *philo, t_times *times, t_run *run)
 {
 	t_philo	*cur;
 	t_philo	*new;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	philo = NULL;
@@ -54,11 +71,9 @@ t_philo	*ft_init_philo(t_philo *philo, t_times *times)
 		if (!new)
 			return (NULL);
 		new->times = times;
-		new->last_meal = 0;
+		new->last_meal = get_time_in_ms();
 		new->id = i + 1;
-		new->die = malloc(sizeof(t_die));
-		if (pthread_mutex_init(&new->die->die, NULL))
-			return (NULL);
+		new->run = run;
 		if (pthread_mutex_init(&new->write, NULL))
 			return (NULL);
 		if (pthread_mutex_init(&new->fork, NULL))
