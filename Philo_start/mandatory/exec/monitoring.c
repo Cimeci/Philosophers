@@ -6,32 +6,31 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:16:17 by inowak--          #+#    #+#             */
-/*   Updated: 2025/02/25 16:54:25 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:49:58 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../philosophers.h"
 
-// void	monitoring(t_data *data)
-// {
-// 	time_t current_time;
-// 	int i;
+void	monitoring(t_philo *philo)
+{
+	time_t current_time;
+	t_philo *cur;
 
-// 	i = 0;
-// 	current_time = get_time_in_ms();
-// 	while (1)
-// 	{
-// 		i = 0;
-// 		while (i < data->nb_philos)
-// 		{
-// 			// printf("monitoring: %lld\n", current_time - data->philo->last_meal);
-// 			if (current_time - data->philo[i].last_meal > data->t_die)
-// 			{
-// 				data->simulation_running = false;
-// 				return ;
-// 			}
-// 			i++;
-// 		}
-// 	}
-// 	usleep(1000);
-// }
+	cur = philo;
+	while (cur)
+	{
+		current_time = get_time_in_ms();
+		if (current_time - philo->last_meal >= cur->times->t_die)
+		{
+			pthread_mutex_lock(&cur->die->die);
+			cur->times->simulation_running = false;
+			pthread_mutex_unlock(&cur->die->die);
+			pthread_mutex_lock(&philo->write);
+			// dprintf(2, "monitoring: %d : %ld | %ld | last_meal: %ld\n", cur->id, current_time - philo->last_meal, cur->times->t_die, philo->last_meal);
+			pthread_mutex_unlock(&philo->write);
+			return ;
+		}
+		cur = cur->next;
+	}
+}

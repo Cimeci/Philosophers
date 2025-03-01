@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:55:01 by inowak--          #+#    #+#             */
-/*   Updated: 2025/02/25 16:53:57 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/02/27 14:13:49 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,4 @@ void	check_input(char **argv)
 		}
 		j++;
 	}
-}
-
-void	check_int(t_times times)
-{
-	if (times.nb_philos > 200)
-		ft_puterror("Error : nb_philos is upper 200\n", 1);
 }

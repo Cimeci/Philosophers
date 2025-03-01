@@ -6,7 +6,7 @@
 #    By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 10:01:50 by inowak--          #+#    #+#              #
-#    Updated: 2025/02/25 13:27:34 by inowak--         ###   ########.fr        #
+#    Updated: 2025/02/28 09:55:56 by inowak--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,20 +45,19 @@ SRC = mandatory/main.c \
 		mandatory/tools/ft_strlen.c \
 		mandatory/tools/ft_lst_utils.c\
 		mandatory/init/ft_init.c \
-		mandatory/init/unique_philo.c\
-		mandatory/brother.c\
-		mandatory/routine.c\
-		mandatory/monitoring.c\
+		mandatory/exec/unique_philo.c\
+		mandatory/exec/process.c\
+		mandatory/exec/routine.c\
+		mandatory/exec/brother.c\
+		mandatory/exec/monitoring.c\
+		mandatory/exec/sleep_check.c\
 		mandatory/clean/clean.c\
 
-SRC_BONUS = 
+OBJ_DIR = .object
 
-OBJ = $(SRC:.c=.o)
-OBJ_BONUS = $(SRC_BONUS:.c=.o)
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 all: $(NAME)
-
-bonus : $(BONUS)
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
@@ -72,29 +71,18 @@ $(NAME): $(OBJ)
 	@echo " ####     ##   ##   ####    #######   ##### ";
 	@echo "$(RESET)";
 
-$(BONUS): $(OBJ_BONUS)
-	@$(CC) $(CFLAGS) $(OBJ_BONUS) -o $(NAME)
-	@echo "$(LIGHT_CYAN)"
-	@echo " ######    #####   ##   ##  ##   ##   #####"
-	@echo "  ##  ##  ##   ##  ###  ##  ##   ##  ##   ##"
-	@echo "  ##  ##  ##   ##  #### ##  ##   ##  #"
-	@echo "  #####   ##   ##  ## ####  ##   ##   #####"
-	@echo "  ##  ##  ##   ##  ##  ###  ##   ##       ##"
-	@echo "  ##  ##  ##   ##  ##   ##  ##   ##  ##   ##"
-	@echo " ######    #####   ##   ##   #####    #####"
-	@echo "$(RESET)"
-
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -O0 -c $< -o $@
 
 clean:
+	@rm -rf $(OBJ_DIR)
 	@echo "$(RED)clean$(RESET)"
 	@rm -f $(OBJ) $(OBJ_LIB) $(OBJ_BONUS)
 
 fclean: clean
 	@echo "$(YELLOW)remove$(YELLOW) $(RED)$(NAME)$(RESET)"
 	@rm -f $(NAME)
-	@rm -f $(BONUS)
 
 re: fclean all
 
