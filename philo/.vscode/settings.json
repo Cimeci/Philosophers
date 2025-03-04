@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "philosophers.h": "c",
+        "time.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "span": "c",
+        "stdio.h": "c",
+        "tools.h": "c"
+    }
+}
+  
