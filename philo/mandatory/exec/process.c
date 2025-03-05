@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:46:23 by inowak--          #+#    #+#             */
-/*   Updated: 2025/03/04 16:17:18 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:33:09 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	process(t_philo *philo, t_times *times)
 		unique_philo(philo);
 		return ;
 	}
-	printf("\033[1;34m-----ROUTINE-----\033[0m\n");
+	printf("\033[1;34m--------- ROUTINE ---------\033[0m\n");
 	times->start_time = get_time_in_ms();
 	while (cur)
 	{

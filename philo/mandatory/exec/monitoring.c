@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:16:17 by inowak--          #+#    #+#             */
-/*   Updated: 2025/03/04 14:17:41 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:51:13 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,6 @@ void	monitoring(t_philo *philo)
 {
 	t_philo	*cur;
 
-	if (philo->times->nb_must_eat != -1)
-	{
-		monitoring_limit(philo);
-		return ;
-	}
-	cur = philo;
-	while (cur)
-	{
-		if (script_monitoringt(cur))
-			return ;
-		cur = cur->next;
-	}
-}
-
-void	monitoring_limit(t_philo *philo)
-{
-	t_philo	*cur;
-
 	cur = philo;
 	while (cur)
 	{
@@ -67,5 +49,8 @@ void	monitoring_limit(t_philo *philo)
 		if (script_monitoringt(cur))
 			return ;
 		cur = cur->next;
+		if (cur == philo)
+			usleep(1000);
 	}
 }
+

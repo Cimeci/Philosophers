@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 09:49:06 by inowak--          #+#    #+#             */
-/*   Updated: 2025/03/04 14:26:29 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:01:55 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	sleep_check(t_philo *philo, time_t sleep_time)
 			return (1);
 		}
 		pthread_mutex_unlock(&philo->run->die);
-		usleep(1);
+		usleep(10);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:29:57 by inowak--          #+#    #+#             */
-/*   Updated: 2025/03/04 18:29:46 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/05 09:59:42 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ft_eat(t_philo *philo)
 	}
 	write_msg(philo, "is eating 🍜​​​");
 	sleep_check(philo, philo->times->t_eat);
+	// usleep(philo->times->t_eat * 1000);
 	pthread_mutex_unlock(&philo->prev->fork);
 	pthread_mutex_unlock(&philo->fork);
 }

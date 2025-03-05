@@ -6,7 +6,7 @@
 /*   By: inowak-- <inowak--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:57:37 by inowak--          #+#    #+#             */
-/*   Updated: 2025/03/04 15:02:56 by inowak--         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:51:24 by inowak--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void				delay(t_philo *philo);
 // routine //
 
 void				ft_sleep(t_philo *philo);
-void				ft_think(t_philo *philo);
+void				ft_think(t_philo *philo, bool print);
 void				ft_die(t_philo *philo);
 void				*routine(void *arg);
 
@@ -128,6 +128,5 @@ void				brother(t_philo *philo);
 // monitoring //
 
 void				monitoring(t_philo *philo);
-void				monitoring_limit(t_philo *philo);
 
 #endif
